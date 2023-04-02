@@ -176,7 +176,7 @@ if (proxytype === 'Tor') {
             });
         });
     async function worker() {
-        var a = await navigator.serviceWorker.register('/tor-sw.js', {
+        var a = await navigator.serviceWorker.register('/sw.js', {
             scope: '/tor/',
             type: 'module',
         });
