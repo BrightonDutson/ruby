@@ -1,7 +1,6 @@
 if ('function' === typeof importScripts) {
     importScripts('/dip/dip.worker.js');
     importScripts('/osana/osana.worker.js');
-    importScripts('/tor/tor.worker.js');
     const sw = new DIPServiceWorker('/dip/dip.worker.js');
     const Osana = new OsanaServiceWorker();
     self.addEventListener('fetch', (event) => {
