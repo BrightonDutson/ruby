@@ -69,6 +69,58 @@ function changeProxy(proxy) {
                 });
             }
         });
+    } else if (proxy === 'Tor') {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'The Tor relay is slow and can cause security vulnerabilities if not used properly!',
+            icon: 'Warning!',
+            color: 'var(--text-color)',
+            background: 'var(--bg-color)',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, I want to connect to the tor relay.',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'Are you sure you want to use Tor it is not recomended unless you know exactly what your doing!',
+                    icon: 'success',
+                    color: 'var(--text-color)',
+                    background: 'var(--bg-color)',
+                    confirmButtonText: 'Yes, I am sure',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Changed',
+                            text: 'Your now connected to the onion router, please wait while your route is established',
+                            icon: 'success',
+                            color: 'var(--text-color)',
+                            background: 'var(--bg-color)',
+                        });
+                        localStorage.setItem('proxy', proxy);
+                    } else {
+                        Swal.fire({
+                            title: 'Cancled',
+                            text: 'Your connection to Tor has been cancled',
+                            color: 'var(--text-color)',
+                            background: 'var(--bg-color)',
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Defaulting...',
+                    text: 'Defaulting to previously selected option',
+                    color: 'var(--text-color)',
+                    background: 'var(--bg-color)',
+                }).then(() => {
+                    window.location.reload();
+                });
+            }
+        });
     } else {
         localStorage.setItem('proxy', proxy);
     }
