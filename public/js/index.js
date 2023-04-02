@@ -170,7 +170,7 @@ if (proxytype === 'Tor') {
                 let textcolor = getComputedStyle(
                     document.body
                 ).getPropertyValue('--text-color');
-                iframe.src = '/tor/' + url;
+                iframe.src = '/tor/go/' + url;
                 document.getElementById('control').classList.remove('dnone');
                 iframe.classList.remove('dnone');
             });
